@@ -1,5 +1,4 @@
 .env
-.sass-cache
 db/*.sqlite3
 node_modules
 public/uploads/*
