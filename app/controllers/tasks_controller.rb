@@ -13,13 +13,11 @@ class TasksController < ApplicationController
   end
 
   post '/tasks/create' do
-    @task = Task.new(params.merge({ user_id: current_user.id }))
+    @task = current_user.tasks.new(params)
 
-    if @task.save
-      redirect '/tasks'
-    else
-      slim :'/tasks/new.html', layout: :'layout.html', locals: { message: 'Something went wrong. Please try again.' }
-    end
+    return [201, {}, [@task.attributes.select{ |a| ['title', 'deadline'].include? a }.to_json]] if @task.save
+
+    [422, {}, [@task.errors.to_json]]
   end
 
   post '/tasks/destroy' do
