@@ -7,7 +7,7 @@ module.exports = {
     './app/assets/stylesheets/main.scss'
   ],
   output: {
-    path: path.resolve(__dirname, 'public/js'),
+    path: path.resolve(__dirname, 'public/dist'),
     filename: 'main.min.js',
   },
   module: {
@@ -24,7 +24,7 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: '../css/main.min.css'
+              name: 'main.min.css'
             }
           },
           'sass-loader'
