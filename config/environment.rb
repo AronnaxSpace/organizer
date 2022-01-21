@@ -1,10 +1,15 @@
+# frozen_string_literal: true
+
 ENV['SINATRA_ENV'] ||= 'development'
 
 require 'sinatra'
-require 'bundler'
-require 'dotenv'
+require 'bundler/setup'
 
-Dotenv.load
+if ENV['SINATRA_ENV'] == 'development'
+  require 'dotenv'
+  Dotenv.load
+end
+
 Bundler.require(:default, ENV['SINATRA_ENV'])
 
 configure :development do
