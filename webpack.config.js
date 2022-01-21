@@ -1,18 +1,35 @@
-const path = require( 'path' );
+const path = require('path');
+
 module.exports = {
-    context: __dirname,
-    entry: './app/assets/javascripts/main.js',
-    output: {
-        path: path.resolve( __dirname, './public/js' ),
-        filename: 'main.min.js',
-    },
-    module: {
-        rules: [
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: 'babel-loader',
+  context: __dirname,
+  entry: [
+    './app/assets/javascripts/main.js',
+    './app/assets/stylesheets/main.scss'
+  ],
+  output: {
+    path: path.resolve(__dirname, 'public/js'),
+    filename: 'main.min.js',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: 'babel-loader'
+      },
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '../css/main.min.css'
             }
-        ]
-    }
+          },
+          'sass-loader'
+        ],
+      },
+    ],
+  },
 };
