@@ -1,20 +1,20 @@
-table border="1px"
+== partial :'tasks/_form.html'
+table border="1px" id="tasks"
   thead
     tr
       th Task
       th Deadline
-      th 
+      th
   tbody
     - @tasks.each do |task|
-      tr
+      tr id="task-#{task.id}"
         td
           = task.title
         td.ta-center
           - if task.deadline
-            = task.deadline&.strftime("%d/%m/%Y")
+            = task.deadline&.strftime("%d.%m.%Y")
           - else
             = '-'
         td
-          form action="/tasks/destroy" method="post" 
-            input name="task_id" type="hidden" value="#{task.id}"
+          form action="/tasks/#{task.id}/destroy" method="post" onSubmit="destroyTask(event)"
             button.btn-red type="submit" x
