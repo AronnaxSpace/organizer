@@ -1,6 +1,6 @@
-window.addEventListener( "load", function () {
-  const tasks = document.getElementById( "tasks" );
-  const newTaskForm = document.getElementById( "new-task-form" );
+window.addEventListener("load", function () {
+  const tasks = document.getElementById("tasks");
+  const newTaskForm = document.getElementById("new-task-form");
 
   showLoader= () => {
     let loader = document.createElement("div");
@@ -40,13 +40,13 @@ window.addEventListener( "load", function () {
     xhttp.send();
   }
 
-  newTaskForm.addEventListener( "submit", function ( event ) {
+  newTaskForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
     showLoader();
 
     let xhttp = new XMLHttpRequest();
-    let params = new FormData( newTaskForm );
+    let params = new FormData(newTaskForm);
 
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 201) {
@@ -64,7 +64,7 @@ window.addEventListener( "load", function () {
 
     xhttp.open("POST", "/tasks/create", true);
     xhttp.send(params);
-  } );
+  });
 
   addNewTask = (attrs) => {
     let tr = document.createElement("tr");
@@ -74,7 +74,7 @@ window.addEventListener( "load", function () {
     let destroyForm = document.createElement("form");
     let destroyFormSubmitButton = document.createElement("button");
 
-    tr.id = attrs.id
+    tr.id = `task-${attrs.id}`;
 
     titleTd.innerText = attrs.title;
     tr.appendChild(titleTd);
@@ -96,4 +96,4 @@ window.addEventListener( "load", function () {
     tr.appendChild(destroyTd);
     tasks.appendChild(tr);
   }
-} );
+});
