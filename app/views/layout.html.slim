@@ -14,9 +14,9 @@ html
     link href="/css/main.min.css?ver=1.0.0" rel="stylesheet"
   body
     .wrapper
-      .sidebar
+      aside.sidebar
         == partial :'_sidebar.html'
-      .content
+      main#main.main
         == yield
 
     script src="/js/main.min.js"

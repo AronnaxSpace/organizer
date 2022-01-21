@@ -2,8 +2,29 @@ window.addEventListener( "load", function () {
   const tasks = document.getElementById( "tasks" );
   const newTaskForm = document.getElementById( "new-task-form" );
 
+  showLoader= () => {
+    let loader = document.createElement("div");
+    loader.classList.add("loader");
+
+    let loaderRing = document.createElement("span");
+    loaderRing.classList.add("lds-dual-ring");
+    loader.appendChild(loaderRing);
+
+    document.body.appendChild(loader);
+  }
+
+  hideLoader = () => {
+    let loader = document.getElementsByClassName("loader");
+
+    for(let i = 0; i < loader.length; i++) {
+      loader[i].remove();
+    }
+  }
+
   newTaskForm.addEventListener( "submit", function ( event ) {
     event.preventDefault();
+
+    showLoader();
 
     let xhttp = new XMLHttpRequest();
     let params = new FormData( newTaskForm );
@@ -11,9 +32,14 @@ window.addEventListener( "load", function () {
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 201) {
         addNewTask(JSON.parse(this.response));
+
+        newTaskForm.reset();
+        hideLoader();
       }
       if (this.readyState == 4 && this.status == 422) {
         console.log(JSON.parse(this.response));
+
+        hideLoader();
       }
     };
 

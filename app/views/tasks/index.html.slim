@@ -4,7 +4,7 @@ table border="1px" id="tasks"
     tr
       th Task
       th Deadline
-      th 
+      th
   tbody
     - @tasks.each do |task|
       tr
@@ -12,7 +12,7 @@ table border="1px" id="tasks"
           = task.title
         td.ta-center
           - if task.deadline
-            = task.deadline&.strftime("%d/%m/%Y")
+            = task.deadline&.strftime("%d.%m.%Y")
           - else
             = '-'
         td
