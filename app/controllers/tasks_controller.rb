@@ -20,10 +20,10 @@ class TasksController < ApplicationController
     [422, {}, [@task.errors.to_json]]
   end
 
-  post '/tasks/destroy' do
-    @task = Task.find_by(id: params[:task_id])
+  post '/tasks/:id/destroy' do
+    @task = Task.find_by(id: params[:id])
     @task.destroy
 
-    redirect '/tasks'
+    [200, {}, [params[:id]]]
   end
 end

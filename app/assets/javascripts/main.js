@@ -21,6 +21,25 @@ window.addEventListener( "load", function () {
     }
   }
 
+  destroyTask = (event) => {
+    event.preventDefault();
+
+    showLoader();
+
+    let xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById(`task-${this.response}`).remove()
+
+        hideLoader();
+      }
+    };
+
+    xhttp.open("POST", event.target.action, true);
+    xhttp.send();
+  }
+
   newTaskForm.addEventListener( "submit", function ( event ) {
     event.preventDefault();
 
