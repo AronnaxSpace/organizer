@@ -15,7 +15,7 @@ class TasksController < ApplicationController
   post '/tasks/create' do
     @task = current_user.tasks.new(params)
 
-    return [201, {}, [@task.attributes.select{ |a| ['title', 'deadline'].include? a }.to_json]] if @task.save
+    return [201, {}, [@task.attributes.select{ |a| ['id', 'title', 'deadline'].include? a }.to_json]] if @task.save
 
     [422, {}, [@task.errors.to_json]]
   end

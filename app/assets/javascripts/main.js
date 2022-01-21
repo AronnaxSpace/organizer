@@ -30,7 +30,7 @@ window.addEventListener( "load", function () {
 
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-        document.getElementById(`task-${this.response}`).remove()
+        document.getElementById(`task-${this.response}`).remove();
 
         hideLoader();
       }
@@ -71,7 +71,10 @@ window.addEventListener( "load", function () {
     let titleTd = document.createElement("td");
     let deadlineTd = document.createElement("td");
     let destroyTd = document.createElement("td");
-    let destroyButton = document.createElement("button");
+    let destroyForm = document.createElement("form");
+    let destroyFormSubmitButton = document.createElement("button");
+
+    tr.id = attrs.id
 
     titleTd.innerText = attrs.title;
     tr.appendChild(titleTd);
@@ -80,11 +83,17 @@ window.addEventListener( "load", function () {
     deadlineTd.classList.add("ta-center");
     tr.appendChild(deadlineTd);
 
-    destroyButton.innerHTML = "x";
-    destroyButton.classList.add("btn-red");
-    destroyTd.appendChild(destroyButton);
-    tr.appendChild(destroyTd);
+    destroyForm.setAttribute("action", `/tasks/${attrs.id}/destroy`);
+    destroyForm.setAttribute("method", "post");
+    destroyForm.setAttribute("onsubmit", "destroyTask(event)");
 
+    destroyFormSubmitButton.innerHTML = "x";
+    destroyFormSubmitButton.classList.add("btn-red");
+    destroyFormSubmitButton.setAttribute("type", "submit")
+    destroyForm.appendChild(destroyFormSubmitButton);
+
+    destroyTd.appendChild(destroyForm);
+    tr.appendChild(destroyTd);
     tasks.appendChild(tr);
   }
 } );
