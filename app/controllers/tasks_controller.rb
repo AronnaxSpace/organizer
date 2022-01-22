@@ -6,12 +6,6 @@ class TasksController < ApplicationController
     slim :'tasks/index.html', layout: :'layout.html'
   end
 
-  get '/tasks/new' do
-    redirect '/login' unless logged_in?
-
-    slim :'/tasks/new.html', layout: :'layout.html'
-  end
-
   post '/tasks/create' do
     @task = current_user.tasks.new(params)
 
