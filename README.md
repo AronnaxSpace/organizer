@@ -8,15 +8,14 @@
 - nodejs >= 4.18.3
 
 ### Setup
-###### * Ubuntu & rbenv
-
-create `.env` file and copy the `.env.example` content into it
 
 clone the repository and go to the organizer folder:
 ```bash
 git clone git@github.com:AronnaxSpace/organizer.git
 cd organizer
 ```
+
+create `.env` file and copy the `.env.example` content into it
 
 install ruby:
 ```bash
