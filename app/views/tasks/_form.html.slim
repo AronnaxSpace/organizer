@@ -1,5 +1,5 @@
 form id="new-task-form" action="/tasks/create" method="post"
-  label for="username"
+  label for="title"
     | Title:
     br/
     input name="title" placeholder="title" type="text"
@@ -7,6 +7,6 @@ form id="new-task-form" action="/tasks/create" method="post"
   label for="deadline"
     | Deadline:
     br/
-    input name="deadline" placeholder="deadline" type="datetime"
+    input name="deadline" placeholder="deadline" type="date"
   br/
   button.m-t type="submit" Create
