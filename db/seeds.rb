@@ -1,16 +1,16 @@
-user = User.find_or_initialize_by(username: 'superuser')
+user = User.find_or_initialize_by(email: 'test@test.com')
 
 unless user.id
-  user.email = 'user@mail.com'
-  user.password = 'strongPassword_123'
+  user.email = 'test@test.com'
+  user.password = '123456abc@'
 
   user.save!
 end
 
 unless user.tasks.any?
   tasks = [
-    { title: Faker::Hipster.sentence, user: user },
-    { title: Faker::Hipster.sentence, user: user }
+    { title: Faker::Hipster.sentence, user: user, deadline: Faker::Date.forward(days: rand(5..20)) },
+    { title: Faker::Hipster.sentence, user: user, deadline: Faker::Date.forward(days: rand(5..20)) }
   ]
 
   tasks.each do |t|
