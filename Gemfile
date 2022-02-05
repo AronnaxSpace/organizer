@@ -9,6 +9,7 @@ gem 'puma'
 gem 'rake'
 gem 'require_all'
 gem 'sinatra-activerecord'
+gem 'sidekiq'
 gem 'slim'
 
 group :development do
