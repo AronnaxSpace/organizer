@@ -16,8 +16,13 @@ GEM
     concurrent-ruby (1.1.9)
     connection_pool (2.2.5)
     dotenv (2.7.6)
+    et-orbi (1.2.6)
+      tzinfo
     faker (2.19.0)
       i18n (>= 1.6, < 2)
+    fugit (1.5.2)
+      et-orbi (~> 1.1, >= 1.1.8)
+      raabro (~> 1.4)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     method_source (1.0.0)
@@ -31,6 +36,7 @@ GEM
       method_source (~> 1.0)
     puma (5.5.2)
       nio4r (~> 2.0)
+    raabro (1.4.0)
     rack (2.2.3)
     rack-protection (2.1.0)
       rack
@@ -44,6 +50,9 @@ GEM
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       redis (>= 4.2.0)
+    sidekiq-cron (1.2.0)
+      fugit (~> 1.1)
+      sidekiq (>= 4.2.1)
     sinatra (2.1.0)
       mustermann (~> 1.0)
       rack (~> 2.2)
@@ -76,6 +85,8 @@ DEPENDENCIES
   require_all
   shotgun
   sidekiq
+  sidekiq-cron
+  sinatra
   sinatra-activerecord
   slim
   sqlite3

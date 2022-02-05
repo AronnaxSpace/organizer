@@ -8,8 +8,10 @@ gem 'mini_magick'
 gem 'puma'
 gem 'rake'
 gem 'require_all'
-gem 'sinatra-activerecord'
 gem 'sidekiq'
+gem 'sidekiq-cron'
+gem 'sinatra'
+gem 'sinatra-activerecord'
 gem 'slim'
 
 group :development do
