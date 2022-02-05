@@ -1,8 +1,17 @@
+# frozen_string_literal: true
+
 class TasksController < ApplicationController
   get '/tasks' do
     redirect '/login' unless logged_in?
 
-    @tasks = current_user.tasks
+    @tasks = current_user.tasks.not_archived
+    slim :'tasks/index.html', layout: :'layout.html'
+  end
+
+  get '/tasks/archived' do
+    redirect '/login' unless logged_in?
+
+    @tasks = current_user.tasks.archived
     slim :'tasks/index.html', layout: :'layout.html'
   end
 
