@@ -1,4 +1,4 @@
-test_job:
-  cron: "* * * * *"
-  class: "TestWorker"
-  queue: critical
+archive_tasks_job:
+  cron: "0 1 * * *"
+  class: ArchiveTasksWorker
+  queue: default
