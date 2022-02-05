@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'config/environment'
 
 if ActiveRecord::Base.connection.migration_context.needs_migration?
@@ -10,4 +12,5 @@ Dir[File.join(__dir__, 'app/controllers', '*.rb')].each do |file|
   use File.basename(file, '.rb').camelize.constantize
 end
 
+run ApplicationController
 run Rack::URLMap.new('/' => ApplicationController, '/sidekiq' => Sidekiq::Web)

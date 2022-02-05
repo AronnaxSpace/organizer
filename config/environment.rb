@@ -2,8 +2,9 @@
 
 ENV['SINATRA_ENV'] ||= 'development'
 
-require 'sinatra'
 require 'bundler/setup'
+require 'sidekiq/web'
+require 'sidekiq/cron/web'
 
 if ENV['SINATRA_ENV'] == 'development'
   require 'dotenv'
@@ -12,8 +13,6 @@ end
 
 Bundler.require(:default, ENV['SINATRA_ENV'])
 
-require_relative 'initializers/sidekiq'
-
 configure :development do
   ActiveRecord::Base.establish_connection(
     adapter: 'sqlite3',
@@ -21,4 +20,5 @@ configure :development do
   )
 end
 
+require_all 'config/initializers'
 require_all 'app'
