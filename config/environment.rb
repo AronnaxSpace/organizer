@@ -2,8 +2,9 @@
 
 ENV['SINATRA_ENV'] ||= 'development'
 
-require 'sinatra'
 require 'bundler/setup'
+require 'sidekiq/web'
+require 'sidekiq/cron/web'
 
 if ENV['SINATRA_ENV'] == 'development'
   require 'dotenv'
@@ -19,4 +20,5 @@ configure :development do
   )
 end
 
+require_all 'config/initializers'
 require_all 'app'
