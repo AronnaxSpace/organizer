@@ -1,0 +1,23 @@
+table border="1px" id="tasks"
+  thead
+    tr
+      th Task
+      th Deadline
+      th
+      th
+  tbody
+    - @tasks.each do |task|
+      tr id="task-#{task.id}"
+        td
+          = task.title
+        td.ta-center
+          - if task.deadline
+            = task.deadline&.strftime("%d.%m.%Y")
+          - else
+            = '-'
+        td
+          form action="/tasks/#{task.id}/restore" method="post"
+            button.btn-green type="submit" restore
+        td
+          form action="/tasks/#{task.id}/destroy" method="post" onSubmit="destroyTask(event)"
+            button.btn-red type="submit" x

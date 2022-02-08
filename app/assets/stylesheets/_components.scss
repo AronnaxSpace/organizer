@@ -14,6 +14,11 @@ button {
   &.btn-red {
     background-color: $red;
   }
+
+  &.btn-green {
+    background-color: $green;
+    color: $white;
+  }
 }
 
 form {
