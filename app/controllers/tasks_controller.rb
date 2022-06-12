@@ -8,11 +8,11 @@ class TasksController < ApplicationController
     slim :'tasks/index.html', layout: :'layout.html'
   end
 
-  get '/tasks/archived' do
+  get '/tasks/archive' do
     redirect '/login' unless logged_in?
 
     @tasks = current_user.tasks.archived
-    slim :'tasks/index.html', layout: :'layout.html'
+    slim :'tasks/archive.html', layout: :'layout.html'
   end
 
   post '/tasks/create' do
