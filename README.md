@@ -22,10 +22,11 @@ install ruby:
 rbenv install 2.7.5
 ```
 
-install nodejs and npm:
+install nodejs, npm and yarn:
 ```bash
 sudo apt update
 sudo apt install nodejs npm
+npm install --global yarn
 ```
 
 install sqlite3 and libsqlite3-dev
@@ -45,7 +46,7 @@ bundle install
 
 install js dependencies:
 ```bash
-npm install
+yarn install
 ```
 
 set database:
@@ -58,5 +59,5 @@ rake db:setup
 run these commands in 2 parallel terminal sessions:
 ```bash
 shotgun
-npm run dev
+yarn run dev
 ```
